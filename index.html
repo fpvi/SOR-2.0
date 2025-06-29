@@ -1,1 +1,44 @@
-<h1>hi</h1>
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký dự thi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <form id="registerForm">
+        <h2>Form đăng ký dự thi</h2>
+
+        <label>Tên trong Discord:</label>
+        <input type="text" name="discordName" required>
+
+        <label>Số Cost đã sử dụng:</label>
+        <input type="text" name="costUsed" required>
+
+        <label>Ý cảnh + sao vũ khí S thường:</label>
+        <input type="text" name="characterScene" required>
+
+        <label>Link bài dự thi (YouTube, Drive):</label>
+        <input type="url" name="submissionLink" required>
+
+        <label>Chọn ngách (tối đa 3):</label><br>
+        <label><input type="checkbox" name="categories" value="Ngách 1"> Ngách 1</label>
+        <label><input type="checkbox" name="categories" value="Ngách 2"> Ngách 2</label>
+        <label><input type="checkbox" name="categories" value="Ngách 3"> Ngách 3</label>
+
+        <label>Link nhạc sử dụng (nếu có):</label>
+        <input type="url" name="musicLink">
+
+        <label>Ghi chú cho Ban tổ chức:</label>
+        <textarea name="notes"></textarea>
+
+        <button type="submit">Gửi</button>
+        <p id="result"></p>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
