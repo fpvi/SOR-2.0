@@ -16,27 +16,23 @@ document
       notes: form.notes.value,
     };
 
-    const params = new URLSearchParams();
-    params.append("data", JSON.stringify(data));
+    const queryString = new URLSearchParams({
+      data: JSON.stringify(data),
+    }).toString();
 
     const endpoint =
-      "https://script.google.com/macros/s/AKfycbyv42d5zQQ95NqhR835bN-p_BWI2lZiunwOoxQLH5DzEa3jFjIz1c8kvc1GYyCucfQvVA/exec";
+      "https://script.google.com/macros/s/AKfycbyv42d5zQQ95NqhR835bN-p_BWI2lZiunwOoxQLH5DzEa3jFjIz1c8kvc1GYyCucfQvVA/exec?" +
+      queryString;
 
     try {
-      const res = await fetch(endpoint, {
-        method: "POST",
-        body: params,
-      });
-
-      const text = await res.text();
-      console.log("Response:", text);
-      const result = JSON.parse(text);
+      const res = await fetch(endpoint); // 👉 Dùng GET, không cần method/post
+      const result = await res.json();
       document.getElementById("result").textContent =
         result.status === "success"
           ? "✔️ Gửi thành công!"
           : "❌ Có lỗi xảy ra!";
     } catch (err) {
-      console.error("Error:", err);
+      console.error(err);
       document.getElementById("result").textContent =
         "⚠️ Gửi thất bại. Vui lòng thử lại.";
     }
